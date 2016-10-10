@@ -1,7 +1,10 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Fibonacci(
     fibNaive,
     fibLinear,
-    fibClassic
+    fibClassic,
+    fibLinearBang
 ) where
 
 -- textbook
@@ -17,7 +20,16 @@ fibLinear 1 = 1
 fibLinear x = fibLin' 2 1 2
   where
       fibLin' i y z | i == x = y
-      fibLin' i y z = fibLin' (i+1) z (z+y)
+      fibLin' i y z          = fibLin' (i+1) z (z+y)
+
+-- Linear banged
+fibLinearBang :: Int -> Integer
+fibLinearBang 0 = 0
+fibLinearBang 1 = 1
+fibLinearBang x = fibLin' 2 1 2
+  where
+      fibLin' (!i) (!y) (!z) | i == x = y
+      fibLin' (!i) (!y) (!z)          = fibLin' (i+1) z (z+y)
 
 -- Haskeller classic lazy
 fibClassic :: Int -> Integer

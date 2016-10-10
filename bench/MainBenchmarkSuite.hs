@@ -6,6 +6,7 @@ main :: IO ()
 main = defaultMain [
   bgroup "fibNaive" $ benchesFor fibNaive,
   bgroup "fibLinear" $ benchesFor fibLinear,
+  bgroup "fibLinearBang" $ benchesFor fibLinearBang,
   bgroup "fibClassic" $ benchesFor fibClassic
   ]
 
