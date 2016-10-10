@@ -2,8 +2,12 @@
 
 Just trying out Haskell [Stack](https://docs.haskellstack.org/en/stable/GUIDE/)
 
+Includes the following:
+
+- Different Fibonacci implementations
 - Implementing read from stdin and calling a function
 - Tests via HSpec
+- Travis integration
 - Benchmarking using criterion
 
 # Running
