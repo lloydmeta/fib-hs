@@ -7,13 +7,19 @@ main = hspec $ do
   let fibWithIdx = zip [0 .. ] fibSeq
   describe "fibNaive" $ do
     it "returns the proper fib" $ do
-      let list = [(exptd, fibNaive idx) | (idx, exptd) <- fibWithIdx ]
-      all (\(exptd, obs) -> exptd == obs) list `shouldBe` True
+      let checks = do
+            (idx, exptd) <- fibWithIdx
+            return $ fibNaive idx == exptd
+      all id checks `shouldBe` True
   describe "fibLinear" $ do
     it "returns the proper fib" $ do
-      let list = [(exptd, fibLinear idx) | (idx, exptd) <- fibWithIdx ]
-      all (\(exptd, obs) -> exptd == obs) list `shouldBe` True
+      let checks = do
+              (idx, exptd) <- fibWithIdx
+              return $ fibLinear idx == exptd
+      all id checks `shouldBe` True
   describe "fibClassic" $ do
     it "returns the proper fib" $ do
-      let list = [(exptd, fibClassic idx) | (idx, exptd) <- fibWithIdx ]
-      all (\(exptd, obs) -> exptd == obs) list `shouldBe` True
+        let checks = do
+              (idx, exptd) <- fibWithIdx
+              return $ fibClassic idx == exptd
+        all id checks `shouldBe` True
