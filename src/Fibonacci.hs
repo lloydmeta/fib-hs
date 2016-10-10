@@ -12,11 +12,11 @@ fibNaive x = fibNaive(x-1) + fibNaive(x-2)
 
 -- Linear
 fibLinear :: Int -> Integer
-fibLinear x = fst $ fibLin' 0 0 1
+fibLinear x = fibLin' 0 0 1
   where
-      fibLin' _ _ _ | x == 0 = (0, 0)
-      fibLin' _ _ _ | x == 1 = (1, 0)
-      fibLin' i y z | i == x = (y, z)
+      fibLin' _ _ _ | x == 0 = 0
+      fibLin' _ _ _ | x == 1 = 1
+      fibLin' i y z | i == x = y
       fibLin' i y z = fibLin' (i+1) z (z+y)
 
 -- Haskeller classic lazy

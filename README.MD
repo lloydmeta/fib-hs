@@ -35,67 +35,67 @@ fib-hs-0.1.0.0: benchmarks
 Running 1 benchmarks...
 Benchmark fib-hs-bench: RUNNING...
 benchmarking fibNaive/10
-time                 924.5 ns   (911.9 ns .. 937.2 ns)
+time                 861.5 ns   (848.0 ns .. 875.2 ns)
                      0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 931.7 ns   (918.9 ns .. 948.0 ns)
-std dev              51.29 ns   (40.62 ns .. 65.58 ns)
-variance introduced by outliers: 71% (severely inflated)
+mean                 874.5 ns   (861.2 ns .. 888.5 ns)
+std dev              45.66 ns   (37.83 ns .. 59.65 ns)
+variance introduced by outliers: 68% (severely inflated)
              
 benchmarking fibNaive/20
-time                 113.9 μs   (111.4 μs .. 116.6 μs)
-                     0.996 R²   (0.995 R² .. 0.997 R²)
-mean                 114.1 μs   (111.7 μs .. 116.3 μs)
-std dev              7.582 μs   (6.351 μs .. 9.315 μs)
-variance introduced by outliers: 65% (severely inflated)
+time                 107.8 μs   (105.1 μs .. 110.6 μs)
+                     0.996 R²   (0.994 R² .. 0.998 R²)
+mean                 106.9 μs   (105.1 μs .. 109.2 μs)
+std dev              6.694 μs   (5.685 μs .. 7.902 μs)
+variance introduced by outliers: 63% (severely inflated)
              
 benchmarking fibNaive/30
-time                 13.32 ms   (12.97 ms .. 13.61 ms)
-                     0.997 R²   (0.994 R² .. 0.999 R²)
-mean                 14.08 ms   (13.83 ms .. 14.48 ms)
-std dev              780.9 μs   (564.5 μs .. 1.245 ms)
-variance introduced by outliers: 26% (moderately inflated)
+time                 12.65 ms   (12.44 ms .. 12.87 ms)
+                     0.998 R²   (0.996 R² .. 0.999 R²)
+mean                 13.34 ms   (13.04 ms .. 13.76 ms)
+std dev              935.3 μs   (680.8 μs .. 1.204 ms)
+variance introduced by outliers: 35% (moderately inflated)
              
 benchmarking fibLinear/10
-time                 158.4 ns   (156.1 ns .. 160.9 ns)
-                     0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 158.1 ns   (155.5 ns .. 160.7 ns)
-std dev              8.389 ns   (6.681 ns .. 10.55 ns)
-variance introduced by outliers: 72% (severely inflated)
+time                 144.1 ns   (142.0 ns .. 146.1 ns)
+                     0.998 R²   (0.998 R² .. 0.999 R²)
+mean                 143.5 ns   (141.6 ns .. 145.5 ns)
+std dev              6.660 ns   (5.889 ns .. 7.825 ns)
+variance introduced by outliers: 67% (severely inflated)
              
 benchmarking fibLinear/20
-time                 334.1 ns   (329.5 ns .. 338.2 ns)
-                     0.998 R²   (0.998 R² .. 0.999 R²)
-mean                 331.4 ns   (325.7 ns .. 337.7 ns)
-std dev              19.34 ns   (15.23 ns .. 25.49 ns)
+time                 311.0 ns   (305.2 ns .. 315.7 ns)
+                     0.998 R²   (0.997 R² .. 0.999 R²)
+mean                 308.4 ns   (303.9 ns .. 314.8 ns)
+std dev              18.25 ns   (14.05 ns .. 26.08 ns)
 variance introduced by outliers: 75% (severely inflated)
              
 benchmarking fibLinear/30
-time                 505.6 ns   (494.9 ns .. 514.9 ns)
-                     0.997 R²   (0.995 R² .. 0.998 R²)
-mean                 498.8 ns   (490.6 ns .. 508.2 ns)
-std dev              30.80 ns   (25.10 ns .. 38.84 ns)
-variance introduced by outliers: 76% (severely inflated)
+time                 458.1 ns   (449.8 ns .. 466.9 ns)
+                     0.997 R²   (0.996 R² .. 0.998 R²)
+mean                 466.6 ns   (459.7 ns .. 476.1 ns)
+std dev              27.38 ns   (20.22 ns .. 45.96 ns)
+variance introduced by outliers: 75% (severely inflated)
              
 benchmarking fibClassic/10
-time                 26.14 ns   (25.79 ns .. 26.51 ns)
-                     0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 26.21 ns   (25.77 ns .. 26.62 ns)
-std dev              1.445 ns   (1.224 ns .. 1.896 ns)
-variance introduced by outliers: 77% (severely inflated)
-             
-benchmarking fibClassic/20
-time                 60.15 ns   (59.20 ns .. 61.01 ns)
-                     0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 60.34 ns   (59.25 ns .. 61.40 ns)
-std dev              3.558 ns   (2.948 ns .. 4.310 ns)
+time                 24.56 ns   (24.01 ns .. 25.06 ns)
+                     0.997 R²   (0.996 R² .. 0.998 R²)
+mean                 24.73 ns   (24.36 ns .. 25.21 ns)
+std dev              1.425 ns   (1.208 ns .. 1.721 ns)
 variance introduced by outliers: 78% (severely inflated)
              
+benchmarking fibClassic/20
+time                 56.42 ns   (55.63 ns .. 57.40 ns)
+                     0.998 R²   (0.996 R² .. 0.999 R²)
+mean                 56.98 ns   (56.06 ns .. 58.25 ns)
+std dev              3.646 ns   (2.878 ns .. 5.005 ns)
+variance introduced by outliers: 81% (severely inflated)
+             
 benchmarking fibClassic/30
-time                 80.14 ns   (78.88 ns .. 81.30 ns)
+time                 73.93 ns   (72.79 ns .. 75.18 ns)
                      0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 79.47 ns   (78.18 ns .. 80.60 ns)
-std dev              4.070 ns   (3.260 ns .. 4.862 ns)
-variance introduced by outliers: 72% (severely inflated)
+mean                 75.28 ns   (74.05 ns .. 76.95 ns)
+std dev              4.638 ns   (3.733 ns .. 7.101 ns)
+variance introduced by outliers: 79% (severely inflated)
              
 Benchmark fib-hs-bench: FINISH
 ```
