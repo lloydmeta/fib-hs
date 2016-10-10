@@ -9,5 +9,5 @@ main = defaultMain [
   bgroup "fibClassic" $ benchesFor fibClassic
   ]
 
-benchesFor :: (Int -> Int) -> [Benchmark]
+benchesFor :: (Int -> Integer) -> [Benchmark]
 benchesFor f = map (\to -> bench (show to) $ nf f to) [10, 20, 30]
