@@ -1,4 +1,4 @@
-# Fib HS
+# Fib HS [![Build Status](https://travis-ci.org/lloydmeta/fib-hs.svg?branch=master)](https://travis-ci.org/lloydmeta/fib-hs)
 
 Just trying out Haskell [Stack](https://docs.haskellstack.org/en/stable/GUIDE/)
 
