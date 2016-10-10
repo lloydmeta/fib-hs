@@ -1,5 +1,7 @@
 sudo: false
 
+language: c
+
 # Caching so the next build will be fast too.
 cache:
   directories:
@@ -21,3 +23,6 @@ addons:
 
 script:
   - stack --no-terminal --skip-ghc-check test
+
+after_success:
+  - stack --no-terminal --skip-ghc-check bench
