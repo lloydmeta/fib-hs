@@ -2,6 +2,7 @@ import Criterion.Main
 import Fibonacci
 
 -- Our benchmark harness.
+main :: IO ()
 main = defaultMain [
   bgroup "fibNaive" [
                  bench "1"  $ whnf fibNaive 1
