@@ -12,10 +12,10 @@ fibNaive x = fibNaive(x-1) + fibNaive(x-2)
 
 -- Linear
 fibLinear :: Int -> Integer
-fibLinear x = fibLin' 0 0 1
+fibLinear 0 = 0
+fibLinear 1 = 1
+fibLinear x = fibLin' 2 1 2
   where
-      fibLin' _ _ _ | x == 0 = 0
-      fibLin' _ _ _ | x == 1 = 1
       fibLin' i y z | i == x = y
       fibLin' i y z = fibLin' (i+1) z (z+y)
 
