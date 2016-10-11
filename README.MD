@@ -32,7 +32,20 @@ Includes the following:
 
     Fib 30 takes 279.5 ns for `fibLinearBang` vs 78.46 ns for `fibClassic`
     
+### Answer
+
+`Let-floating`, which is enabled by default because `full-laziness` is on by default in GHC,
+causes the `fib'` local variable in `fibClassic` to get pulled out into something like a top-level constant.
+
+Disabling `let-floating` by using the `-fno-full-laziness` flag turns the tables.
+
+This was surprising (and a questionable default) to me because it could potentially have
+a disastrous effect on run-time memory usage (running fib to 100 million would result in holding a huge
+list in memory forever).
+    
 ## Full results
+
+With default GHC options
 
 ```
 fib-hs-0.1.0.0: benchmarks
@@ -121,6 +134,100 @@ time                 78.00 ns   (76.82 ns .. 79.06 ns)
 mean                 78.46 ns   (77.16 ns .. 79.95 ns)
 std dev              4.861 ns   (3.899 ns .. 6.115 ns)
 variance introduced by outliers: 79% (severely inflated)
+             
+Benchmark fib-hs-bench: FINISH
+```
+
+With `-fno-full-laziness` GHC option, which [disables let-floating](https://downloads.haskell.org/~ghc/7.10.1/docs/html/users_guide/options-optimise.html).
+For more flags, see [this list](https://downloads.haskell.org/~ghc/7.10.1/docs/html/users_guide/options-optimise.html). 
+
+```
+fib-hs-0.1.0.0: benchmarks
+Running 1 benchmarks...
+Benchmark fib-hs-bench: RUNNING...
+benchmarking fibNaive/10
+time                 1.011 μs   (991.5 ns .. 1.030 μs)
+                     0.997 R²   (0.996 R² .. 0.998 R²)
+mean                 1.006 μs   (988.4 ns .. 1.026 μs)
+std dev              66.08 ns   (52.75 ns .. 84.40 ns)
+variance introduced by outliers: 78% (severely inflated)
+             
+benchmarking fibNaive/20
+time                 121.4 μs   (119.5 μs .. 123.6 μs)
+                     0.996 R²   (0.994 R² .. 0.998 R²)
+mean                 124.2 μs   (121.9 μs .. 126.8 μs)
+std dev              8.340 μs   (6.625 μs .. 11.12 μs)
+variance introduced by outliers: 66% (severely inflated)
+             
+benchmarking fibNaive/30
+time                 15.09 ms   (14.56 ms .. 15.54 ms)
+                     0.995 R²   (0.991 R² .. 0.998 R²)
+mean                 15.58 ms   (15.31 ms .. 15.85 ms)
+std dev              712.8 μs   (559.1 μs .. 917.2 μs)
+variance introduced by outliers: 16% (moderately inflated)
+             
+benchmarking fibLinear/10
+time                 110.6 ns   (108.8 ns .. 112.3 ns)
+                     0.997 R²   (0.996 R² .. 0.998 R²)
+mean                 110.2 ns   (108.2 ns .. 112.3 ns)
+std dev              6.664 ns   (5.516 ns .. 8.040 ns)
+variance introduced by outliers: 78% (severely inflated)
+             
+benchmarking fibLinear/20
+time                 260.8 ns   (257.4 ns .. 263.7 ns)
+                     0.998 R²   (0.998 R² .. 0.999 R²)
+mean                 254.9 ns   (251.4 ns .. 258.2 ns)
+std dev              11.97 ns   (10.70 ns .. 13.56 ns)
+variance introduced by outliers: 66% (severely inflated)
+             
+benchmarking fibLinear/30
+time                 428.5 ns   (425.6 ns .. 431.7 ns)
+                     0.998 R²   (0.997 R² .. 0.999 R²)
+mean                 431.4 ns   (424.4 ns .. 439.1 ns)
+std dev              24.65 ns   (19.92 ns .. 31.54 ns)
+variance introduced by outliers: 74% (severely inflated)
+             
+benchmarking fibLinearBang/10
+time                 82.07 ns   (80.22 ns .. 83.94 ns)
+                     0.997 R²   (0.996 R² .. 0.998 R²)
+mean                 80.77 ns   (79.33 ns .. 82.01 ns)
+std dev              4.414 ns   (3.734 ns .. 5.267 ns)
+variance introduced by outliers: 75% (severely inflated)
+             
+benchmarking fibLinearBang/20
+time                 180.3 ns   (177.5 ns .. 182.9 ns)
+                     0.998 R²   (0.997 R² .. 0.999 R²)
+mean                 177.8 ns   (174.5 ns .. 180.7 ns)
+std dev              9.882 ns   (8.357 ns .. 12.08 ns)
+variance introduced by outliers: 74% (severely inflated)
+             
+benchmarking fibLinearBang/30
+time                 256.8 ns   (250.9 ns .. 263.8 ns)
+                     0.996 R²   (0.995 R² .. 0.998 R²)
+mean                 259.8 ns   (255.7 ns .. 263.2 ns)
+std dev              12.95 ns   (10.76 ns .. 15.42 ns)
+variance introduced by outliers: 69% (severely inflated)
+             
+benchmarking fibClassic/10
+time                 238.1 ns   (234.5 ns .. 242.5 ns)
+                     0.997 R²   (0.995 R² .. 0.998 R²)
+mean                 243.5 ns   (239.4 ns .. 248.6 ns)
+std dev              15.32 ns   (12.51 ns .. 18.82 ns)
+variance introduced by outliers: 78% (severely inflated)
+             
+benchmarking fibClassic/20
+time                 474.3 ns   (469.0 ns .. 479.8 ns)
+                     0.999 R²   (0.998 R² .. 0.999 R²)
+mean                 474.0 ns   (470.5 ns .. 480.4 ns)
+std dev              15.57 ns   (9.727 ns .. 23.87 ns)
+variance introduced by outliers: 47% (moderately inflated)
+             
+benchmarking fibClassic/30
+time                 731.2 ns   (720.0 ns .. 742.9 ns)
+                     0.998 R²   (0.997 R² .. 0.999 R²)
+mean                 738.4 ns   (727.3 ns .. 749.5 ns)
+std dev              40.12 ns   (33.71 ns .. 52.35 ns)
+variance introduced by outliers: 71% (severely inflated)
              
 Benchmark fib-hs-bench: FINISH
 ```

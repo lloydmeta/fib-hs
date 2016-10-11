@@ -19,6 +19,11 @@ library
   build-depends:       base >= 4.7 && < 5
   other-extensions:    BangPatterns
   default-language:    Haskell2010
+  ghc-options:         -O2
+                       -Wall
+                       -- Uncommenting the next option causes fibClassic to be slower
+                       -- on average because it disables lambda-lifting and thus memoising of fib'
+--                       -fno-full-laziness
 
 executable fib-hs-exe
   hs-source-dirs:      app
@@ -27,6 +32,8 @@ executable fib-hs-exe
   build-depends:       base
                      , fib-hs
   default-language:    Haskell2010
+  ghc-options:         -O2
+                       -Wall
 
 test-suite fib-hs-test
   type:                exitcode-stdio-1.0
